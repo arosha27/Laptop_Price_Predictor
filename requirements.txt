@@ -1,0 +1,17 @@
+# Data Manipulation
+pandas
+numpy
+
+
+# Machine Learning
+scikit-learn
+
+# Visualizations
+matplotlib
+seaborn
+
+# Frontend / Deployment
+streamlit
+
+# Utility
+pickle-mixin
