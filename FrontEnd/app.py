@@ -1,83 +1,4 @@
-# import streamlit as st
-# import pickle
-# import numpy as np
-# import pandas as pd
 
-# # 1. Load the model
-# # Ensure 'best_laptop_price_model.pkl' is in the same folder as this script
-# pipe = pickle.load(open('TrainedModels/best_laptop_price_model.pkl', 'rb'))
-
-# st.set_page_config(page_title="Laptop Price Predictor", layout="centered")
-
-# st.title("💻 Laptop Price Predictor")
-# st.write("Provide the specifications below to get the estimated price.")
-
-# # --- INPUT FIELDS ---
-# col1, col2 = st.columns(2)
-
-# with col1:
-#     company = st.selectbox('Brand', ['Apple', 'HP', 'Acer', 'Asus', 'Dell', 'Lenovo', 'MSI', 'Toshiba', 'Other'])
-#     type_name = st.selectbox('Type', ['Ultrabook', 'Notebook', 'Netbook', 'Gaming', '2 in 1 Convertible', 'Workstation'])
-#     ram = st.selectbox('RAM (in GB)', [2, 4, 6, 8, 12, 16, 24, 32, 64])
-#     weight = st.number_input('Weight of the Laptop (kg)', value=2.0)
-
-# with col2:
-#     touchscreen = st.selectbox('Touchscreen', ['No', 'Yes'])
-#     ips = st.selectbox('IPS Panel', ['No', 'Yes'])
-#     screen_size = st.number_input('Screen Size (Inches)', value=15.6)
-#     resolution = st.selectbox('Screen Resolution', [
-#         '1920x1080', '1366x768', '1600x900', '3840x2160', 
-#         '3200x1800', '2880x1800', '2560x1600', '2560x1440', '2304x1440'
-#     ])
-
-# st.divider()
-
-# col3, col4 = st.columns(2)
-
-# with col3:
-#     cpu = st.selectbox('CPU Brand', ['Intel Core i3', 'Intel Core i5', 'Intel Core i7', 'Other Intel Processor', 'AMD Processor'])
-#     hdd = st.selectbox('HDD (in GB)', [0, 128, 256, 512, 1024, 2048])
-#     ssd = st.selectbox('SSD (in GB)', [0, 8, 128, 256, 512, 1024])
-
-# with col4:
-#     gpu = st.selectbox('GPU Brand', ['Intel', 'Nvidia', 'AMD'])
-#     os_sys = st.selectbox('Operating System', ['Windows', 'Mac', 'Others/No OS/Linux'])
-
-# # --- PREDICTION LOGIC ---
-# if st.button('💰 Predict Price'):
-#     # 1. Calculate PPI (Required feature for your model)
-#     X_res = int(resolution.split('x')[0])
-#     Y_res = int(resolution.split('x')[1])
-#     ppi = ((X_res**2) + (Y_res**2))**0.5 / screen_size
-
-#     # 2. Prepare the Input DataFrame
-#     # Note: Column names match your training set EXACTLY (TouchScreen, IPS, ppi)
-#     query_df = pd.DataFrame({
-#         'Company': [company],
-#         'TypeName': [type_name],
-#         'Ram': [ram],
-#         'Weight': [weight],
-#         'TouchScreen': [1 if touchscreen == 'Yes' else 0],
-#         'IPS': [1 if ips == 'Yes' else 0],
-#         'Cpu Brand': [cpu],
-#         'HDD': [hdd],
-#         'SSD': [ssd],
-#         'Hybrid': [0],
-#         'Flash_Storage': [0],
-#         'Gpu Brand': [gpu],
-#         'os': [os_sys],
-#         'ppi': [ppi]
-#     })
-
-#     # 3. Predict and Inverse Log Transformation
-#     # Since training used np.log(Price), we use np.exp() to get the real value
-#     predicted_log_price = pipe.predict(query_df)
-#     final_price = np.exp(predicted_log_price[0])
-
-#     # 4. Display Result in RS
-#     st.success(f"### The estimated price is RS {int(final_price):,}")
-    
- 
 import streamlit as st
 import pickle
 import numpy as np
@@ -87,6 +8,8 @@ import seaborn as sns
 
 # 1. Load the model (The Pipeline)
 # Ensure this file exists in your project folder
+
+
 pipe = pickle.load(open('TrainedModels/best_laptop_price_model.pkl', 'rb'))
 
 st.set_page_config(page_title="Laptop Price Predictor", layout="wide")
