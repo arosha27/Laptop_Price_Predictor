@@ -49,7 +49,7 @@ The project is organized into modular directories for better scalability and dep
 Based on the results in `TrainedModels/model_comparison_results.csv`:
 
 * **Best Model:** Extra Trees Regressor
-* **Accuracy (R² Score):** ~89%
+* **Accuracy (R² Score):** ~88%
 * **Feature Impact:** CPU Brand, RAM, and SSD were found to be the top 3 price drivers.
 
 ## 💻 Installation & Usage
@@ -57,8 +57,8 @@ Based on the results in `TrainedModels/model_comparison_results.csv`:
 ### 1. Setup Environment
 
 ```bash
-git clone https://github.com/yourusername/laptop-price-predictor.git
-cd laptop-price-predictor
+git clone https://github.com/yourusername/Laptop-Price-Predictor.git
+cd Laptop-Price-Predictor
 pip install -r requirements.txt
 
 ```
